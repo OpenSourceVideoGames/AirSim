@@ -1,9 +1,9 @@
-# Welcome to Colosseum, a successor of [AirSim](https://github.com/microsoft/AirSim)
+# Welcome to Microsoft AirSim, a frork of [AirSim](https://github.com/microsoft/AirSim) and port to UE 5 by [Colosseum](https://github.com/CodexLabsLLC/Colosseum)
   
 ## Build Status
-[![Ubuntu Build](https://github.com/CodexLabsLLC/Colosseum/actions/workflows/test_ubuntu.yml/badge.svg)](https://github.com/CodexLabsLLC/Colosseum/actions/workflows/test_ubuntu.yml)
-[![MacOS Build](https://github.com/CodexLabsLLC/Colosseum/actions/workflows/test_macos.yml/badge.svg)](https://github.com/CodexLabsLLC/Colosseum/actions/workflows/test_macos.yml)
-[![Windows Build](https://github.com/CodexLabsLLC/Colosseum/actions/workflows/test_windows.yml/badge.svg)](https://github.com/CodexLabsLLC/Colosseum/actions/workflows/test_windows.yml)
+[![Ubuntu Build](https://github.com/OpenSourceVideoGames/AirSim/actions/workflows/test_ubuntu.yml/badge.svg)](https://github.com/OpenSourceVideoGames/AirSim/actions/workflows/test_ubuntu.yml)
+[![MacOS Build](https://github.com/OpenSourceVideoGames/AirSim/actions/workflows/test_macos.yml/badge.svg)](https://github.com/OpenSourceVideoGames/AirSim/actions/workflows/test_macos.yml)
+[![Windows Build](https://github.com/OpenSourceVideoGames/AirSim/actions/workflows/test_windows.yml/badge.svg)](https://github.com/OpenSourceVideoGames/AirSim/actions/workflows/test_windows.yml)
 
 [![](https://dcbadge.vercel.app/api/server/y9ZJKKKn8J)](https://discord.gg/y9ZJKKKn8J)
   
@@ -12,17 +12,16 @@ The company managing this repo created the SWARM Developer System to help build,
 multi-agent autonomous systems. Check it out here: [SWARM Developer System](https://www.swarmsim.io/overview/developer)
   
 ## IMPORTANT ANNOUNCEMENT
-Moving forward, we are now using Unreal Engine 5 version 5.03 or greater! If you
-want to use UE4.27, you can use the branch `ue4.27`.
+Moving forward, we are now using Unreal Engine 5 version 5.3.2 or greater! If you
+want to use UE4.27, you can use original [AirSim](https://github.com/microsoft/AirSim).
   
 ## Unreal Engine Version for Main Branch
-The main branch of this repository **only** supports Unreal Engine 5.2! Please see our other branches
-for other versions that we support.
+The main branch of this repository **only** supports Unreal Engine 5.3 for now!
   
 ## Currently Supported Operating Systems
 Below are the list of officially supported Operating Systems, with full Unreal Engine support:
 ### Windows
-- Windows 10 (Latest)
+- Windows 11 (Latest)
 
 ### Linux
 - ~~Ubuntu 18.04~~ (NO LONGER SUPPORTED. 18.04 is EOL so we will not be checking this anymore and GitHub doesn't support CI builds)
@@ -36,9 +35,6 @@ Below are the list of officially supported Operating Systems, with full Unreal E
 - MacOS (11)
   
 **NOTE** MacOS support is highly experimental and may be dropped in future releases. This is because Apple continually changes their build tools and doesn't like 3rd party developers in general. There are ongoing discussions to remove this support.
-
-## Sponsors
-1. Codex Laboratories LLC [Website](https://www.codex-labs-llc.com)
   
 ## Introduction
   
@@ -49,14 +45,6 @@ This is a fork of the AirSim repository, which Microsoft decided to shutdown in 
 ## Join the Community
 We have decided to create a Discord channel to better allow for community engagement. Join here: [Colosseum Robotics Discord](https://discord.gg/y9ZJKKKn8J).
   
-  
-## Goals and Project Development
-This section will contain a list of the current features that the community and Codex Labs are working on to support and build.
-
-Click [here](https://docs.google.com/document/d/1doohQTos4v1tg4Wv6SliQFnKNK1MouKX2efg2mapXFU/edit?usp=sharing) to view our current development goals!
-
-If you want to be apart of the official development team, attend meetings, etc., please utilize the Slack channel (link above) and 
-let Tyler Fedrizzi know!
 
 ## License
 
