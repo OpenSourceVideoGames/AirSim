@@ -31,6 +31,7 @@ namespace airlib
         {
             sensors_ = &getSensors();
             start_time_ = ClockFactory::get()->nowNanos();
+            resetRotors();
             connect();
         }
 
@@ -71,6 +72,7 @@ namespace airlib
                     
                         failed_pkts = 0;
                         start_timestamp = timestamp + wait_time;
+                        resetRotors();
                         Utils::log(Utils::stringf("Rotors data not recieved. Retry in %.0f sec", wait_time), Utils::kLogLevelWarn);
                     }
                 }
@@ -130,15 +132,7 @@ namespace airlib
             unused(environment);
 
             if (physics_ == nullptr) {
-
-                for (UpdatableObject* container = this->getParent(); container != nullptr; container = container->getParent()) {
-                    if (container->getName() == "MultiRotorPhysicsBody") {
-                        // cool beans!
-                        // note: cannot use dynamic_cast because Unreal builds with /GR- for some unknown reason...
-                        physics_ = static_cast<MultiRotorPhysicsBody*>(container);
-                        break;
-                    }
-                } 
+                physics_ = static_cast<MultiRotorPhysicsBody*>(this->getParent());
             }
         }
 
@@ -336,8 +330,14 @@ namespace airlib
             motor_socket_ = std::make_unique<mavlinkcom::UdpSocket>();
             motor_socket_->bind(connection_info_.local_host_ip, motor_port_);
 
-            servo_socket_ = std::make_unique<mavlinkcom::UdpSocket>();
-            servo_socket_->bind(connection_info_.local_host_ip, servo_port_);
+            // servo_socket_ = std::make_unique<mavlinkcom::UdpSocket>();
+            // servo_socket_->bind(connection_info_.local_host_ip, servo_port_);
+        }
+
+        void resetRotors()
+        {
+            for (auto i = 0; i < kBetaflightMotorCount; i++)
+                rotor_controls_[i] = 0;
         }
 
     private:
@@ -394,8 +394,6 @@ namespace airlib
         bool recvControl()
         {
             ServoPacket s_pkt;
-            ServoPacketRaw sr_pkt;
-
             int s_recv_ret = motor_socket_->recv(&s_pkt, sizeof(s_pkt), 100);
 
             if (s_recv_ret != sizeof(s_pkt)) {
@@ -413,22 +411,23 @@ namespace airlib
                 rotor_controls_[i] = s_pkt.pwm[i];
             }
 
-            int sr_recv_ret = servo_socket_->recv(&sr_pkt, sizeof(sr_pkt), 100);
+            // ServoPacketRaw sr_pkt;
+            // int sr_recv_ret = servo_socket_->recv(&sr_pkt, sizeof(sr_pkt), 100);
 
-            if (sr_recv_ret != sizeof(sr_pkt)) {
-                if (sr_recv_ret <= 0) {
-                    Utils::log(Utils::stringf("Error while receiving servo control data - ErrorNo: %d", sr_recv_ret), Utils::kLogLevelInfo);
-                }
-                else {
-                    Utils::log(Utils::stringf("Received %d bytes instead of %zu bytes for servos", sr_recv_ret, sizeof(sr_pkt)), Utils::kLogLevelInfo);
-                }
-            }
-            else {
+            // if (sr_recv_ret != sizeof(sr_pkt)) {
+            //     if (sr_recv_ret <= 0) {
+            //         Utils::log(Utils::stringf("Error while receiving servo control data - ErrorNo: %d", sr_recv_ret), Utils::kLogLevelInfo);
+            //     }
+            //     else {
+            //         Utils::log(Utils::stringf("Received %d bytes instead of %zu bytes for servos", sr_recv_ret, sizeof(sr_pkt)), Utils::kLogLevelInfo);
+            //     }
+            // }
+            // else {
 
-                for (auto i = 0; i < kBetaflightServoCount; ++i) {
-                    servo_controls_[i] = sr_pkt.pwm[i];
-                }
-            }
+            //     for (auto i = 0; i < kBetaflightServoCount; ++i) {
+            //         servo_controls_[i] = sr_pkt.pwm[i];
+            //     }
+            // }
 
             // Utils::log(Utils::stringf("pwm received: [ %f, %f, %f, %f ]", rotor_controls_[0], rotor_controls_[1], rotor_controls_[2], rotor_controls_[3]), Utils::kLogLevelInfo);
             return true;
@@ -453,7 +452,7 @@ namespace airlib
 
         struct ServoPacket // equivalent of servo_packet in betaflight SITL
         {
-            uint16_t pwm[kBetaflightMotorCount];
+            float pwm[kBetaflightMotorCount];
         };
 
         struct ServoPacketRaw // equivalent of servo_packet_raw in betaflight SITL
@@ -482,6 +481,7 @@ namespace airlib
 
         std::string ip_;
         RCData last_rcData_;
+        bool is_connected_ = false;
         bool is_rc_connected_;
         uint64_t start_time_; // changed in contructor call
 
