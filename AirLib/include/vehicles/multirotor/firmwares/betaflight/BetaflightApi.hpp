@@ -63,6 +63,7 @@ namespace airlib
                 if (recvControl()) {
 
                     failed_pkts = 0;
+                    if (!is_connected_) is_connected_ = true;
                 }
                 else {
 
@@ -71,6 +72,7 @@ namespace airlib
                     if (failed_pkts >= max_failed_pkts) {
                     
                         failed_pkts = 0;
+                        is_connected_ = false;
                         start_timestamp = timestamp + wait_time;
                         resetRotors();
                         Utils::log(Utils::stringf("Rotors data not recieved. Retry in %.0f sec", wait_time), Utils::kLogLevelWarn);
@@ -92,7 +94,7 @@ namespace airlib
         virtual bool armDisarm(bool arm) override
         {
             unused(arm);
-            return true;
+            return is_connected_;
         }
         virtual GeoPoint getHomeGeoPoint() const override
         {
@@ -148,21 +150,6 @@ namespace airlib
         virtual Kinematics::State getKinematicsEstimated() const override
         {
             return physics_->getKinematics();
-        }
-
-        virtual Vector3r getPosition() const override
-        {
-            return physics_->getKinematics().pose.position;
-        }
-
-        virtual Vector3r getVelocity() const override
-        {
-            return physics_->getKinematics().twist.linear;
-        }
-
-        virtual Quaternionr getOrientation() const override
-        {
-            return physics_->getKinematics().pose.orientation;
         }
 
         virtual LandedState getLandedState() const override
@@ -476,7 +463,7 @@ namespace airlib
         MultirotorApiParams safety_params_;
         AirSimSettings::MavLinkConnectionInfo connection_info_;
         const MultiRotorParams* vehicle_params_;
-        MultiRotorPhysicsBody* physics_;
+        const MultiRotorPhysicsBody* physics_ = nullptr;
         const SensorCollection* sensors_;
 
         std::string ip_;
