@@ -1,4 +1,4 @@
-# Welcome to AirSim, a fork of [AirSim](https://github.com/microsoft/AirSim) which was abandon by [Microsoft](https://microsoft.com/) and ported to UE 5 by [Colosseum](https://github.com/CodexLabsLLC/Colosseum)
+# Welcome to AirSim, a fork of [AirSim](https://github.com/microsoft/AirSim) which was abandon by [MicroSoft](https://microsoft.com/) and ported to UE 5 by [Colosseum](https://github.com/CodexLabsLLC/Colosseum)
   
 ## Build Status
 [![Ubuntu Build](https://github.com/OpenSourceVideoGames/AirSim/actions/workflows/test_ubuntu.yml/badge.svg)](https://github.com/OpenSourceVideoGames/AirSim/actions/workflows/test_ubuntu.yml)
@@ -8,8 +8,7 @@
 [![](https://dcbadge.vercel.app/api/server/y9ZJKKKn8J)](https://discord.gg/y9ZJKKKn8J)
   
 ## Looking for more performance?
-The company managing this repo created the SWARM Developer System to help build, simulate and deploy single and
-multi-agent autonomous systems. Check it out here: [SWARM Developer System](https://www.swarmsim.io/overview/developer)
+The company managing this repo created the SWARM Developer System to help build, simulate and deploy single and multi-agent autonomous systems. Check it out here: [SWARM Developer System](https://www.swarmsim.io/overview/developer)
   
 ## IMPORTANT ANNOUNCEMENT
 Moving forward, we are now using Unreal Engine 5 versions but if you need to use not latest version please use the available branches: [UE 5.3](https://github.com/OpenSourceVideoGames/AirSim/tree/ue5.3), [UE 5.4](https://github.com/OpenSourceVideoGames/AirSim/tree/ue5.4) or newer if exist!
