@@ -10,9 +10,13 @@ if [[ ! -e "$UnrealDir" ]]; then
     UnrealDir=$1
 fi
 if [[ ! -e "$UnrealDir" ]]; then
-    # UnrealDir variable must be set like '/Users/Shared/Epic\ Games/UE_4.16'
+    # UnrealDir variable must be set like '/Users/Shared/Epic\ Games/UE_5.4'
     echo "UnrealDir is not set."
     exit 1
+fi
+
+if [ ! -d ./Plugins ]; then
+    ./update_from_git.sh
 fi
 
 if [ "$(uname)" == "Darwin" ]; then

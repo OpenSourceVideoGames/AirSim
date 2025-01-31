@@ -279,6 +279,7 @@ ModelManifest.xml
 /MavLinkCom/lib/libMavLinkCom.a
 /Unreal/Plugins/AirSim/Source/AirLib/
 /Unreal/Environments/BlocksV2/Plugins/AirSim/
+/Unreal/Environments/BlocksV2/BlocksV2.sln
 /enc_temp_folder
 /cmake/MavLinkCom/MavLinkTest/MavLinkTest
 /cmake/MavLinkCom/lib/libMavLinkCom.a
@@ -355,6 +356,7 @@ xcuserdata/
 *.xccheckout
 *.xcscmblueprint
 *.xcworkspacedata
+*.xcworkspace
 *.xcodeproj/*
 !*.xcodeproj/project.pbxproj
 !*.xcodeproj/xcshareddata/
