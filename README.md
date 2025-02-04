@@ -15,7 +15,7 @@ Moving forward, we are now using Unreal Engine 5 versions but if you need to use
 If you want to use UE4.27, you can use the original [AirSim](https://github.com/microsoft/AirSim).
   
 ## Unreal Engine Version for Main Branch
-The main branch of this repository **only** supports Unreal Engine 5.3 for now!
+The main branch of this repository **only** supports Unreal Engine 5.4 and 5.5 for now!
   
 ## Currently Supported Operating Systems
 Below is the list of officially supported Operating Systems, with full Unreal Engine support:
