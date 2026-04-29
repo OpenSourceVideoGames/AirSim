@@ -1,3 +1,5 @@
+# This project is archived, better to use https://github.com/iamaisim/ProjectAirSim which has better support.
+
 # Welcome to AirSim, a fork of [AirSim](https://github.com/microsoft/AirSim) which was abandon by [MicroSoft](https://microsoft.com/) and ported to UE 5 by [Colosseum](https://github.com/CodexLabsLLC/Colosseum)
   
 ## Build Status
